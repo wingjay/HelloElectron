@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hello Electron</title>
+</head>
+<body>
+Hello Electron, i'm Jay.<br />
+
+Node-Version: <div id="node-version"></div>
+Electron-Version: <div id="electron-version"></div>
+
+<script type="text/javascript">
+	console.log('process: ', process)
+	var nodeV = process.version
+	var eleV = process.versions['electron']
+	document.getElementById('node-version').innerText = nodeV
+	document.getElementById('electron-version').innerText = eleV
+</script>
+</body>
+</html>

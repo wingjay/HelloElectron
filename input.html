@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reverse String</title>
+</head>
+<body>
+	<div>
+		<input type="text" id="input" name="" />
+		<br>
+		<button id="button">Reverse</button>
+	</div>
+
+<script type="text/javascript">
+	var ipcRenderer = require('electron').ipcRenderer
+	document.getElementById('button').onclick = function () {
+		var value = document.getElementById('input').value
+		// Async
+		ipcRenderer.send('Async-reverse-string', value)
+		// Sync
+		var syncReply = ipcRenderer.sendSync('Sync-reverse-string', value)
+		console.log('Sync Reply:', syncReply)
+	}
+
+	ipcRenderer.on('Async-reverse-string', function (event, arg) {
+		console.log('Async Reply:', arg)
+	})
+</script>
+</body>
+</html>
